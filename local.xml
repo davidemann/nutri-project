@@ -59,9 +59,9 @@
 	            <action method="unsetChild"><name>breadcrumbs</name></action>
 	    	</reference>
 	        <reference name="top.links">
-	        	<reference name="wishlist_link">  <!-- see Alan Storm workaround to remove wishlist -->
+	        	<reference name="wishlist_link">  see Alan Storm workaround to remove wishlist
 		            <action method="setTemplate"><template>blank-link.phtml</template></action>         
-		        </reference> 
+		       </reference>
 	        </reference>
 		</reference>
 
@@ -101,7 +101,7 @@
 				<action method="removeLinkByUrl"><url helper="catalogsearch/getAdvancedSearchUrl"/></action>
 				<action method="addLink" translate="label title">
 	                <label>About Us</label>
-	                <url>/index.php/about-us</url>
+	                <url>/funkybunch/index.php/about-us</url>
 	                <title>About Us</title>
 	                <prepare/>
 	                <urlParams/>
@@ -109,7 +109,7 @@
              	</action>
              	<action method="addLink" translate="label title">
 	                <label>Customer Service</label>
-	                <url>/index.php/customer-service</url>
+	                <url>/funkybunch/index.php/customer-service</url>
 	                <title>Customer Service</title>
 	                <prepare/>
 					<urlParams/>
@@ -158,7 +158,11 @@
 			<action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action> 
 		</reference> -->
 		<reference name="content">
-			<block type="core/template" name="personal_section" template="btm/personal_section.phtml"/> <!-- doesn't need getChildHtml because content is core/text_list and renders own children -->
+			<block type="core/template" name="personal_section" template="btm/personal_section.phtml"> <!-- doesn't need getChildHtml because content is core/text_list and renders own children -->
+				<block type="cms/block" name="promotion_text" after=''>
+	      			<action method="setBlockId"><block_id>promotion_text</block_id></action>
+				</block>
+			</block>
 			<block type="core/template" name="picture_menu" template="btm/picture_menu.phtml"/> <!-- ditto -->
 			<block type="core/template" name="fb_connections" template="btm/fb_connections.phtml"/> <!-- ditto -->
 		</reference>
@@ -229,6 +233,41 @@
 		<reference name="head">
 			<action method="addItem"><type>skin_js</type><name>js/contact-active.js</name></action>
 		</reference>
+		
+		<reference name="content">
+            <block type="core/template" name="contactsBespoke" before="-" template="btm/bespoke.phtml">
+	            <block type="cms/block" name="bespoke_text_1" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_text_1</block_id></action>
+				</block>
+				<block type="cms/block" name="bespoke_image_1" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_image_1</block_id></action>
+				</block>
+				<block type="cms/block" name="bespoke_image_2" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_image_2</block_id></action>
+				</block>
+				<block type="cms/block" name="bespoke_text_2" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_text_2</block_id></action>
+				</block>
+				<block type="cms/block" name="bespoke_text_3" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_text_3</block_id></action>
+				</block>
+				<block type="cms/block" name="bespoke_image_3" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_image_3</block_id></action>
+				</block>
+				<block type="cms/block" name="bespoke_image_4" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_image_4</block_id></action>
+				</block>
+				<block type="cms/block" name="bespoke_text_4" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_text_4</block_id></action>
+				</block>
+			</block>
+			<block type="core/template" name="contactsBespokeFooter" after="-" template="btm/bespoke_footer.phtml">
+	            <block type="cms/block" name="bespoke_footer_text" before="-">
+	      			<action method="setBlockId"><block_id>bespoke_footer_text</block_id></action>
+				</block>
+			</block>
+        </reference>
+        
 	</contacts_index_index>	
 	
 <!-- 
@@ -248,10 +287,12 @@
 	<checkout_cart_index>
 		<reference name="content">
 			<reference name="checkout.cart">
-				<action method="unsetChild"><name>coupon</name></action>
+				<!-- <action method="unsetChild"><name>coupon</name></action> -->
 				<action method="unsetChild"><name>shipping</name></action>
 			</reference>
 		</reference>
 	</checkout_cart_index>
+	
+		
 	
 </layout>
