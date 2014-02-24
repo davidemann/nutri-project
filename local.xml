@@ -59,7 +59,7 @@
 	            <action method="unsetChild"><name>breadcrumbs</name></action>
 	    	</reference>
 	        <reference name="top.links">
-	        	<reference name="wishlist_link">  see Alan Storm workaround to remove wishlist
+	        	<reference name="wishlist_link">  
 		            <action method="setTemplate"><template>blank-link.phtml</template></action>         
 		       </reference>
 	        </reference>
@@ -101,7 +101,7 @@
 				<action method="removeLinkByUrl"><url helper="catalogsearch/getAdvancedSearchUrl"/></action>
 				<action method="addLink" translate="label title">
 	                <label>About Us</label>
-	                <url>/funkybunch/index.php/about-us</url>
+	                <url>/index.php/about-us</url>
 	                <title>About Us</title>
 	                <prepare/>
 	                <urlParams/>
@@ -109,7 +109,7 @@
              	</action>
              	<action method="addLink" translate="label title">
 	                <label>Customer Service</label>
-	                <url>/funkybunch/index.php/customer-service</url>
+	                <url>/index.php/customer-service</url>
 	                <title>Customer Service</title>
 	                <prepare/>
 					<urlParams/>
