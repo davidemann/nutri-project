@@ -1695,7 +1695,7 @@ ul.crosssell-products-list { margin: 10px auto; }
 .cart .discount .buttons-set button.button span span,
 .cart .shipping .buttons-set button.button span span { }
 
-.cart .discount { border-bottom:1px solid #c0d2af ; margin-right: 24px; }
+.cart .discount { margin-right: 24px; } /* was  border-bottom:1px solid #c0d2af ; */
 .cart .discount label { font-weight:bold; color:#555; }
 .cart .discount .input-box { }
 .cart .discount input.input-text { width: 85%; }
@@ -2383,6 +2383,12 @@ top: 25px; }
 
 /********* Wymount additions *******************************/
 
+/* Clear Fix */
+.clearfix:before, .clearfix:after {content: ""; display:table;}
+.clearfix:after {clear: both;}
+
+/* ---- */
+
 #displayWidth {display: none;} /* used to display screen width - using js */
 
 /* To deal with short page problem */
@@ -2406,13 +2412,14 @@ top: 25px; }
 .personal-container {clear:both; width:100%; overflow: hidden;}
 .personal-narrative {float:left; width:50%;}
 .larger-intro {font-size: 1.6em; margin: 0 0 9px 0;}
-.smaller-finale {font-size: 1.2em; line-height: 1.5em;}
+.smaller-finale {font-size: 1.3em; line-height: 1.5em; display: none;}
 .personal-narrative .larger-intro-mobile {display: none;} /* this is the display for mobiles */
 .signature-wrapper img {padding-top: 13px;}
 .signature-names {font-size: 1.2em;}
 .personal-picture {float:right; width:42%;}
 .personal-picture img {width: 100%;}
 .personal-picture-footer {font-size: 1.2em; line-height: 1.6em;}
+.personal-picture .promotion-text {font-size: 133%; color: rgb(186,7,107);}
 
 /* Picture menu */
 .picture-menu-container{clear:both; width:100%; overflow: hidden; margin-top: 30px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;}
@@ -2480,6 +2487,8 @@ input, textarea {font-family: arial sans-serif; }
 /* CATEGORY PRODUCTS */
 .category-products .toolbar-bottom {margin-left: 20px;}
 
+.catalog-product-view .short-description a:link {text-decoration:underline;}
+
 .col3-set .col-1 {font-size: 1.33em;}
 .col-main .post-view {margin-left: 20px;}
 
@@ -2498,6 +2507,33 @@ input, textarea {font-family: arial sans-serif; }
 .contacts-index-index .page-title {margin-left: 20px;}
 #contactForm .fieldset, #contactForm .buttons-set {margin-left: 20px;}
 .contacts-index-index .buttons-set .button {clear: both;}
+
+.contacts-index-index .bespoke_wrapper {padding: 0 22px; margin-bottom: 25px; }
+
+.contacts-index-index .bespoke-text-1 {float: left; width: 50%; font-size: 133%; }
+.contacts-index-index .bespoke-text-1 p {padding-right: 18px; }
+.contacts-index-index .bespoke-image-1 {float: left; width: 50%;}
+.contacts-index-index .bespoke-image-1 img {width: 100%;}
+
+.contacts-index-index .bespoke-image-2 {clear: both; float: left; width: 50%; margin-top: 25px;}
+.contacts-index-index .bespoke-image-2 img {width: 100%;}
+.contacts-index-index .bespoke-text-2 {float: left; width: 50%; font-size: 133%;  margin-top: 25px;}
+.contacts-index-index .bespoke-text-2 p {padding-left: 18px; }
+
+.contacts-index-index .bespoke-text-3 {clear: both; float: left; width: 50%; font-size: 133%; margin-top: 25px;}
+.contacts-index-index .bespoke-text-3 p {padding-right: 18px; }
+.contacts-index-index .bespoke-image-3 {float: left; width: 50%; margin-top: 25px;}
+.contacts-index-index .bespoke-image-3 img {width: 100%;}
+
+.contacts-index-index .bespoke-image-4 {clear: both; float: left; width: 50%; margin-top: 25px;}
+.contacts-index-index .bespoke-image-4 img {width: 100%;}
+.contacts-index-index .bespoke-text-4 {float: left; width: 50%; font-size: 133%;  margin-top: 25px;}
+.contacts-index-index .bespoke-text-4 p {padding-left: 18px; }
+
+.contacts-index-index .bespoke_footer_wrapper {padding: 0 22px; margin-bottom: 25px; }
+.contacts-index-index .bespoke_footer_wrapper p {font-size: 133%;}
+
+
 
 /* ABOUT US */
 .cms-about-us .std, .cms-customer-service .std {margin-left: 20px;}
@@ -2532,6 +2568,15 @@ input:focus, textarea:focus {outline: none;}
 .short-description .std {font-size: 1.1em;}
 
 .form-search {border-bottom: solid 1px rgb(96,127,118);}
+
+/* CHECK OUT ONEPAGE INDEX */
+.checkout-onepage-index #shipnoteContent label {margin-right: 5px;}
+
+/* ------------------------------------------------------------------------------------- */
+/* Target just the ipad for landscape
+ * 
+ */
+
 
 /* CHECK OUT ONEPAGE SUCCESS */
 .checkout-onepage-success .col-main {margin-left: 20px; width: 680px;}
@@ -2804,6 +2849,31 @@ px      40    100    160    220    280    */
 	.contacts-index-index .col-main .page-title, .contacts-index-index #contactForm .fieldset, .contacts-index-index #contactForm .buttons-set {margin-left: 0;}
 	.contacts-index-index #contactForm .buttons-set {margin-bottom: 20px;}
 	
+	.contacts-index-index .bespoke_wrapper {padding: 0 22px; margin-bottom: 25px; }
+
+	.contacts-index-index .bespoke-text-1 {float: left; width: 100%; font-size: 133%; }
+	.contacts-index-index .bespoke-text-1 p {padding-right: 0; }
+	.contacts-index-index .bespoke-image-1 {float: left; width: 100%;}
+	.contacts-index-index .bespoke-image-1 img {width: 100%;}
+	
+	.contacts-index-index .bespoke-image-2 {clear: both; float: left; width: 100%; margin-top: 25px; display: none;}
+	.contacts-index-index .bespoke-image-2 img {width: 100%;}
+	.contacts-index-index .bespoke-text-2 {float: left; width: 100%; font-size: 133%;  margin-top: 25px; display: none;}
+	.contacts-index-index .bespoke-text-2 p {padding-left: 0; }
+	
+	.contacts-index-index .bespoke-text-3 {clear: both; float: left; width: 100%; font-size: 133%; margin-top: 25px;}
+	.contacts-index-index .bespoke-text-3 p {padding-right: 0; }
+	.contacts-index-index .bespoke-image-3 {float: left; width: 100%; margin-top: 25px;}
+	.contacts-index-index .bespoke-image-3 img {width: 100%;}
+	
+	.contacts-index-index .bespoke-image-4 {clear: both; float: left; width: 100%; margin-top: 25px; display: none; }
+	.contacts-index-index .bespoke-image-4 img {width: 100%;}
+	.contacts-index-index .bespoke-text-4 {float: left; width: 100%; font-size: 133%;  margin-top: 25px; display: none;}
+	.contacts-index-index .bespoke-text-4 p {padding-left: 0; }
+	
+	.contacts-index-index .bespoke_footer_wrapper {padding: 0 22px; margin-bottom: 25px; }
+	.contacts-index-index .bespoke_footer_wrapper p {font-size: 133%;}
+	
 	/* Wordpress single view */
 	.wordpress-post-view .col-main .post-title, .wordpress-post-view .col-main .post-view {margin-left: 0;}
 	.wordpress-post-view .col-main .post-view {margin-bottom: 20px;}
@@ -2837,7 +2907,8 @@ px      40    100    160    220    280    */
 	
 	.personal-picture {display: none;}
 	.personal-narrative {width: 100%;}
-	.personal-narrative .larger-intro, .personal-narrative .smaller-finale {display: none;} /* this is the display for mobiles */
+	.personal-narrative .larger-intro {display: none;} /* this is the display for non mobiles */
+	.personal-narrative .smaller-finale {display: block; color: rgb(186,7,107);} /* this is the display for mobiles */
 	.personal-narrative .larger-intro-mobile {display: block; margin: 20px 0 0 0; font-size: 1.3em; line-height: 1.5; text-align: justify;} /* this is the display for mobiles */
 	.cms-index-index .picture-menu-item {width: 80%; float: none; margin: 0 auto;}
 	#first-menu-item, #second-menu-item, #third-menu-item  {margin: 0 auto 10px;}
