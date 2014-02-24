@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Respond
+ * http://respondtheme.com
+ *
+ * Copyright 2012, Nourdine Ben Chakroun
+ * http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+-->
+<layout>
+
+<!-- 
+	## Default Layout ##
+-->
+
+	<default>
+		
+<!-- 
+	Default Head 
+-->
+
+		<reference name="head">
+
+			<!-- Link to external JavaScript file (e.g Jquery CDN)
+			
+			<block type="core/text" name="google.cdn.jquery">
+            	<action method="setText">
+                	<text><![CDATA[<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+					<script type="text/javascript">var $j = jQuery.noConflict();</script>]]>
+                	</text>
+            	</action>
+        	</block> 
+			
+			-->
+			
+			
+			<!-- Remove print.css and styles-ie.css, styles are now all in styles.css to reduce http request -->
+			<action method="removeItem"><type>skin_css</type><name>css/print.css</name></action>
+			<action method="removeItem"><type>skin_css</type><name>css/styles-ie.css</name><params/></action>
+			
+
+			<!-- <action method="addItem"><type>skin_js</type><name>js/jquery.mobile-1.1.0.min.js</name></action> 
+			<action method="addItem"><type>skin_css</type><name>css/styles-ieonly.css</name><params/><if>IE</if></action>-->
+			<action method="addItem"><type>skin_js</type><name>js/jquery-1.7.2.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/respond.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/select-menu.js</name></action>
+			<!-- <action method="addItem"><type>skin_js</type><name>js/winwidth.js</name></action> -->
+
+			
+		</reference>
+
+<!-- 
+	Default Header 
+-->
+
+		<reference name="header">
+			<block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+			<reference name="top.bar">
+	            <action method="unsetChild"><alias>topSearch</alias></action>
+	            <action method="unsetChild"><name>breadcrumbs</name></action>
+	    	</reference>
+	        <reference name="top.links">
+	        	<reference name="wishlist_link">  <!-- see Alan Storm workaround to remove wishlist -->
+		            <action method="setTemplate"><template>blank-link.phtml</template></action>         
+		        </reference> 
+	        </reference>
+		</reference>
+
+
+<!-- 
+	Default Left 
+-->
+		
+		<reference name="left">
+			<block type="core/template" name="left_image" before="-" template="btm/left_image.phtml"/>
+			<block type="wordpress/sidebar_widget_posts" name="wordpress.widget.recent_posts" as="recent_posts" template="wordpress/sidebar/widget/categoryposts.phtml">
+		        <action method="setTitle"><title>Latest Posts</title></action>
+		        <action method="setPostCount"><post_count>6</post_count></action>
+		        <action method="setExcerpt"><display>on</display></action>
+		        <action method="setExcerptLength"><length>30</length></action> <!-- NO EFFECT -->
+		        <action method="setDate"><date>off</date></action>
+		        <action method="setCommentNum"><comments>on</comments></action>
+	    	</block>
+	    	
+	    	<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
+	    	<action method="unsetChild"><name>newsletter</name></action>
+		</reference>
+		
+
+<!-- 
+	Default Footer 
+-->
+
+		<reference name="footer">
+			<action method="unsetChild"><alias>cms_footer_links</alias></action>
+			<block type="cms/block" name="footer_block">
+					<action method="setBlockId"><block_id>footer_block</block_id></action>
+			</block>
+			<reference name="footer_links">
+				<action method="removeLinkByUrl"><url helper="catalog/map/getCategoryUrl"/></action>
+				<action method="removeLinkByUrl"><url helper="catalogsearch/getSearchTermUrl"/></action>
+				<action method="removeLinkByUrl"><url helper="catalogsearch/getAdvancedSearchUrl"/></action>
+				<action method="addLink" translate="label title">
+	                <label>About Us</label>
+	                <url>/index.php/about-us</url>
+	                <title>About Us</title>
+	                <prepare/>
+	                <urlParams/>
+					<position>20</position>
+             	</action>
+             	<action method="addLink" translate="label title">
+	                <label>Customer Service</label>
+	                <url>/index.php/customer-service</url>
+	                <title>Customer Service</title>
+	                <prepare/>
+					<urlParams/>
+					<position>20</position>
+             	</action>
+			</reference>
+		</reference>
+
+		<remove name="return_link" />
+
+	</default>
+	
+	
+<!--
+	Product view
+-->
+
+	 <catalog_product_view>
+		
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/galleria-1.2.7.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/galleria.classic.min.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/galleria.classic.css</name></action>
+		</reference>
+		
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+	 </catalog_product_view>	
+	 
+<!-- 
+	CMS Homepage 
+-->
+	
+	<cms_index_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/carousel.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/menu-hover.js</name></action> 
+		</reference>
+		<reference name="header">
+			<remove name="top.links"/>
+			<block type="carousel/template" name="slider-section" template="btm/slider_section.phtml"/>
+		</reference>
+		<!-- <reference name="top.links">                 reference no longer needed to rmove links individually as removed top.links as a block
+			<remove name="checkout_cart_link" />          takes out the BLOCK with addCartLink & addCheckoutLink
+			<action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action> 
+		</reference> -->
+		<reference name="content">
+			<block type="core/template" name="personal_section" template="btm/personal_section.phtml"/> <!-- doesn't need getChildHtml because content is core/text_list and renders own children -->
+			<block type="core/template" name="picture_menu" template="btm/picture_menu.phtml"/> <!-- ditto -->
+			<block type="core/template" name="fb_connections" template="btm/fb_connections.phtml"/> <!-- ditto -->
+		</reference>
+		<reference name="footer_links">
+			<action method="addLink" translate="label title" module="customer">
+				<label>My Account</label>
+				<url helper="customer/getAccountUrl"/>
+				<title>My Account</title>
+				<prepare/>
+				<urlParams/>
+				<position>20</position>
+			</action>
+		</reference>	
+    </cms_index_index>
+	
+	
+
+<!--
+	Product reviews page
+-->
+
+    <reviews>
+			<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/galleria-1.2.7.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/galleria.classic.min.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/galleria.classic.css</name></action>
+		</reference>
+    </reviews>
+	
+	
+   <review_product_list translate="label">
+   		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/galleria-1.2.7.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/galleria.classic.min.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>css/galleria.classic.css</name></action>
+		</reference>
+    </review_product_list>
+
+<!--
+	Wordpress default
+-->	
+	
+	<wordpress_default>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/wordpress-active.js</name></action>
+		</reference>
+		<reference name="left">
+		<action method="unsetChild"><name>cart_sidebar</name></action>
+		</reference>
+	</wordpress_default>
+	
+	
+<!--
+	Wordpress home  page
+-->	
+	
+	<wordpress_homepage>
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+	</wordpress_homepage>
+	
+<!-- 
+	Contacts page
+-->
+
+	<contacts_index_index>
+		<reference name="head">
+			<action method="addItem"><type>skin_js</type><name>js/contact-active.js</name></action>
+		</reference>
+	</contacts_index_index>	
+	
+<!-- 
+	Customer Account page
+-->	
+	
+	<customer_account>
+		<reference name="left">
+			<action method="unsetChild"><name>left_image</name></action>
+			<action method="unsetChild"><name>recent_posts</name></action>
+		</reference>
+	</customer_account>
+	
+<!-- 
+	Checkout cart page 
+-->		
+	<checkout_cart_index>
+		<reference name="content">
+			<reference name="checkout.cart">
+				<action method="unsetChild"><name>coupon</name></action>
+				<action method="unsetChild"><name>shipping</name></action>
+			</reference>
+		</reference>
+	</checkout_cart_index>
+	
+</layout>
