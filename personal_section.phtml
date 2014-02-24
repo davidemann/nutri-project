@@ -1,0 +1,42 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ *  *
+ * @category    design
+ * @package     btm
+ * @copyright   Copyright (c) 2013 Wymount Ltd
+ * @license     
+ */
+/**
+ * @var Mage_Core_Block_Template $this
+ */
+?>
+<div class="personal-container">
+    <div class="personal-narrative">
+           <p class="larger-intro">
+           	 <?php echo strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId('whoweare1')->toHtml()); ?>
+           </p>
+            <p class="larger-intro-mobile">
+           	 <?php echo strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId('whowearemobile')->toHtml()); ?>
+           </p>
+           <p class="smaller-finale">
+           	 <?php echo strip_tags($this->getLayout()->createBlock('cms/block')->setBlockId('whoweare2')->toHtml()); ?>
+           </p>
+           <div class="signature-wrapper">
+           		<img src="<?php echo $this->getSkinUrl('images/funkybunch_signature.png'); ?>" alt="Fiona & Mary Jane signature" /> 
+               <p class="signature-names">
+	           	 Fiona & Mary Jane
+	           </p>
+	           <p class="signature-role">
+	           	 Funky Bunch
+	           </p>  
+           </div>  
+    </div>
+	<div class="personal-picture">
+		<img src="<?php echo $this->getSkinUrl('images/fiona-MJ.jpg'); ?>" alt="" />
+		<p class="personal-picture-footer">Fiona & Mary Jane, June 2013</p>
+	</div>
+</div>
