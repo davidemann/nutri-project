@@ -4,6 +4,7 @@
  * Magento
  *
  * NOTICE OF LICENSE
+ * 
  *
  * This source file is subject to the Academic Free License (AFL 3.0)
  * that is bundled with this package in the file LICENSE_AFL.txt.
@@ -27,6 +28,7 @@
 
 -->
 <layout version="0.1.0">
+	
 
 <!--
 Default layout, loads most of the pages
@@ -321,7 +323,13 @@ One page checkout main layout
                         <action method="setMayBeInvisible"><value>1</value></action>
                     </block>
                 </block>
-                <block type="checkout/onepage_billing" name="checkout.onepage.billing" as="billing" template="checkout/onepage/billing.phtml"/>
+                <block type="checkout/onepage_billing" name="checkout.onepage.billing" as="billing" template="checkout/onepage/billing.phtml">
+                	 <block type="shipnote/note" name="shipnote" as="note" template="shipnote/note.phtml" >
+            			<block type="cms/block" name="where-did-you-hear">
+	      					<action method="setBlockId"><block_id>where-did-you-hear</block_id></action>
+						</block>
+            		</block>
+                </block>
                 <block type="checkout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="checkout/onepage/shipping.phtml"/>
                 <block type="checkout/onepage_shipping_method" name="checkout.onepage.shipping_method" as="shipping_method" template="checkout/onepage/shipping_method.phtml">
                     <block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="checkout/onepage/shipping_method/available.phtml"/>
