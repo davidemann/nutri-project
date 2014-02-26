@@ -24,8 +24,10 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+
 <form id="co-billing-form" action="">
 <fieldset>
+	<?php echo $this->getChildHtml('note'); ?>
     <ul class="form-list">
     <?php if ($this->customerHasAddresses()): ?>
         <li class="wide">
@@ -201,6 +203,7 @@
             <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
         </span>
     </div>
+    
 </fieldset>
 </form>
 <script type="text/javascript">

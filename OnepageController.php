@@ -223,6 +223,7 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
      */
     public function successAction()
     {
+    	
         $session = $this->getOnepage()->getCheckout();
         if (!$session->getLastSuccessQuoteId()) {
             $this->_redirect('checkout/cart');
@@ -318,8 +319,12 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                 $data['email'] = trim($data['email']);
             }
             $result = $this->getOnepage()->saveBilling($data, $customerAddressId);
-
-            if (!isset($result['error'])) {
+			
+			
+	
+			
+			
+			if (!isset($result['error'])) {
                 /* check quote for virtual */
                 if ($this->getOnepage()->getQuote()->isVirtual()) {
                     $result['goto_section'] = 'payment';
@@ -340,7 +345,11 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                     $result['goto_section'] = 'shipping';
                 }
             }
-
+			
+			
+			Mage::dispatchEvent('checkout_controller_onepage_save_billing_data',
+                        array('request'=>$this->getRequest()));
+			
             $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
         }
     }
@@ -396,6 +405,8 @@ class Mage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
                     'html' => $this->_getPaymentMethodsHtml()
                 );
             }
+			
+			
             $this->getOnepage()->getQuote()->collectTotals()->save();
             $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
         }
